@@ -39,22 +39,23 @@ class SerpentMeltyBloodTypeLuminaGameAgent(GameAgent):
 
         time.sleep(4)
 
-        self.game.randomize_char(1)
-        self.game.randomize_char(2)
+        self.game.set_char(1)
+        self.game.set_char(2)
 
         self.input_controller.tap_key(KeyboardKey.KEY_J)
         self.input_controller.tap_key(KeyboardKey.KEY_NUMPAD_4)
 
-        self.game.randomize_color(1)
-        self.game.randomize_color(2)
+        self.game.set_color(1)
+        self.game.set_color(2)
 
     def handle_play(self, game_frame):
 
-        p1_mem, p2_mem = self.game.pull_memory()
+        p1_mem, p2_mem, time = self.game.pull_memory()
         os.system('cls')
         print(str(p1_mem['score']) + " - " + str(p2_mem['score']))
         print(p1_mem)
         print(p2_mem)
+        print(time)
 
         '''for i, game_frame in enumerate(self.game_frame_buffer.frames):
             self.visual_debugger.store_image_data(
